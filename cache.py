@@ -151,7 +151,7 @@ def associative():
     cache = []
     datacache = []
 
-    # print("\n")
+    
     print("Enter the size of cache")
     s = int(input())
     print("Enter the number of lines in cache")
@@ -173,11 +173,11 @@ def associative():
             temp.append(-1)
         datacache.append(temp)
 
-    # print(datacache)
+    
     lcr = []
     for i in range(lines):
         lcr.append(-1)
-    # print("\n")
+   
     current = 0
     while (True):
         print()
@@ -187,8 +187,7 @@ def associative():
         print("2- Write into cache")
         print("3- Leave current type of Mapping")
         print("press the corresponding number in order to continue....")
-        # print(cache)
-        # print(datacache)
+        
         choice = int(input())
         address = "0"
         data = "0"
@@ -220,35 +219,35 @@ def associative():
                 tag = int(address[0:-(blockpower + setpower)], 2)
                 offset = (int(address[-(blockpower):], 2))
 
-                # number = lines // k
+               
                 if tag in cache[setnumber * number:(setnumber + 1) * number]:
 
-                    # print("Write hit")
+                    
                     linenumbertemp = cache[setnumber * number:(setnumber + 1) * number].index(tag)
                     linenumber = setnumber * number + linenumbertemp
-                    # print("writing in set: " + str(setnumber) + " and in line: " + str(linenumber))
+                    
 
                     lcr[linenumber] = current
                     cache[linenumber] = tag
                     datacache[linenumber][offset] = -1
-                    # sleep(1)
+                    
                 elif (cache[setnumber * number:(setnumber + 1) * number].count(-1) != 0):
-                    # print("Write hit")
+                    
                     linenumbertemp = cache[setnumber * number:(setnumber + 1) * number].index(-1)
                     linenumber = setnumber * number + linenumbertemp
-                    # print("writing in set: " + str(setnumber) + " and in line: " + str(linenumber))
+                   
                     lcr[linenumber] = current
                     cache[linenumber] = tag
                     datacache[linenumber][offset] = -1
-                    # sleep(1)
+                    
                 else:
-                    # print("Required set is full hence removing the block using LRU")
+                    
                     minimum = min(lcr[setnumber * number:(setnumber + 1) * number])
                     linenumbertemp = lcr[setnumber * number:(setnumber + 1) * number].index(minimum)
                     linenumber = setnumber * number + linenumbertemp
-                    # print("Line " + str(linenumber) + " is being replaced")
+                    
                     lcr[linenumber] = current
-                    # linenumber=cache[setnumber * number:(setnumber + 1) * number].index(-1)
+                    
                     cache[linenumber] = tag
                     datacache[linenumber][offset] = -1
                     # sleep(1)
